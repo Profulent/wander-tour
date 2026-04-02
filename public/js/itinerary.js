@@ -5,13 +5,6 @@ const itineraryStops = [
     latlng: [41.9028, 12.4964],
     text: "Start with iconic landmarks, then slow down through neighborhood streets, aperitivo bars, and food tours in Trastevere.",
     image: "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1521292270410-a8c4d716d518?w=1200&auto=format&fit=crop",
-    ],
     highlights: [
       "Sunrise at the Colosseum and Roman Forum",
       "Vatican early-entry museum walk",
@@ -24,13 +17,6 @@ const itineraryStops = [
     latlng: [43.7696, 11.2558],
     text: "A slower rhythm built around Renaissance art, river walks, and a day through Tuscan vineyards and hill towns.",
     image: "https://images.unsplash.com/photo-1543429257-3eb0b65d2b1d?w=1200&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1514282401047-d79a71a590e8?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1501854140801-50d01698950b?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1553913861-c0fddf2619ee?w=1200&auto=format&fit=crop",
-    ],
     highlights: [
       "Uffizi and Duomo guided pass",
       "Sunset on Ponte Vecchio",
@@ -43,13 +29,6 @@ const itineraryStops = [
     latlng: [44.1466, 9.654],
     text: "Coastal hiking paths, pastel harbor towns, and sea-facing trattorias with the freshest catches of the day.",
     image: "https://images.unsplash.com/photo-1521292270410-a8c4d716d518?w=1200&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1521292270410-a8c4d716d518?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1545569341-9eb8b30979d9?w=1200&auto=format&fit=crop",
-    ],
     highlights: [
       "Village hopping by train and ferry",
       "Vernazza to Monterosso panoramic trek",
@@ -62,13 +41,6 @@ const itineraryStops = [
     latlng: [40.634, 14.6027],
     text: "Finish with dramatic coastal drives, Positano viewpoints, Ravello gardens, and a celebratory farewell dinner by the water.",
     image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop",
-    gallery: [
-      "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519852476561-ec618b0183ba?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519046904884-53103b34b206?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519053456866-3ff7d6f0b5c4?w=1200&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=1200&auto=format&fit=crop",
-    ],
     highlights: [
       "Positano morning photo walk",
       "Boat day between hidden coves",
@@ -98,17 +70,13 @@ const stopItems = Array.from(document.querySelectorAll(".stop-item"));
 const detailDays = document.getElementById("detailDays");
 const detailTitle = document.getElementById("detailTitle");
 const detailText = document.getElementById("detailText");
-const detailImagePrimary = document.getElementById("detailImagePrimary");
-const detailImageSecondary = document.getElementById("detailImageSecondary");
+const detailImage = document.getElementById("detailImage");
 const detailHighlights = document.getElementById("detailHighlights");
 const dayAccordion = document.getElementById("dayAccordion");
 const routeMapElement = document.getElementById("routeMap");
 
 let selectedStopIndex = 0;
 let travelerAnimationFrame = null;
-let imageRotationTimer = null;
-let activeImageLayer = 0;
-let lastDetailImageSrc = "";
 let mapInstance;
 let routePolyline;
 let progressPolyline;
@@ -118,94 +86,6 @@ let travelerLatLng = null;
 
 function getRouteLatLngs() {
   return itineraryStops.map((stop) => stop.latlng);
-}
-
-function setStopMarkerStyles(activeIndex) {
-  stopMarkers.forEach((marker, index) => {
-    marker.setStyle({
-      radius: index === activeIndex ? 10 : 8,
-      weight: index === activeIndex ? 4 : 3,
-      fillColor: index === activeIndex ? "#cb7d56" : "#fffaf4",
-    });
-  });
-}
-
-function stopLatLng(index) {
-  return itineraryStops[index].latlng;
-}
-
-function getStopGallery(stop) {
-  const gallery = stop.gallery && stop.gallery.length ? stop.gallery : [stop.image];
-  return Array.from(new Set(gallery));
-}
-
-function getStartingGalleryIndex(gallery, preferredIndex = 0) {
-  if (!gallery.length) return 0;
-  const start = preferredIndex % gallery.length;
-  for (let offset = 0; offset < gallery.length; offset += 1) {
-    const index = (start + offset) % gallery.length;
-    if (gallery[index] !== lastDetailImageSrc) return index;
-  }
-  return start;
-}
-
-function loadGalleryImage(gallery, startIndex, onSuccess, attempts = 0) {
-  if (!gallery.length || attempts >= gallery.length) return;
-
-  const index = (startIndex + attempts) % gallery.length;
-  const src = gallery[index];
-  const preload = new Image();
-
-  preload.onload = () => onSuccess(src, index);
-  preload.onerror = () => loadGalleryImage(gallery, startIndex, onSuccess, attempts + 1);
-  preload.src = src;
-}
-
-function swapDetailImage(gallery, startIndex) {
-  const currentImage = activeImageLayer === 0 ? detailImagePrimary : detailImageSecondary;
-  const nextImage = activeImageLayer === 0 ? detailImageSecondary : detailImagePrimary;
-
-  loadGalleryImage(gallery, startIndex, (src, index) => {
-    nextImage.alt = `${itineraryStops[selectedStopIndex].name} view ${index + 1}`;
-    nextImage.src = src;
-    nextImage.classList.add("active");
-    currentImage.classList.remove("active");
-    activeImageLayer = activeImageLayer === 0 ? 1 : 0;
-    lastDetailImageSrc = src;
-  }, 0, itineraryStops[selectedStopIndex].image);
-}
-
-function setDetailGallery(stop, startIndex = 0) {
-  const gallery = getStopGallery(stop);
-  const initialIndex = getStartingGalleryIndex(gallery, startIndex);
-
-  if (imageRotationTimer) {
-    clearInterval(imageRotationTimer);
-    imageRotationTimer = null;
-  }
-
-  loadGalleryImage(gallery, initialIndex, (src) => {
-    detailImagePrimary.src = src;
-    detailImagePrimary.alt = stop.name;
-    detailImagePrimary.classList.add("active");
-    detailImageSecondary.src = src;
-    detailImageSecondary.alt = stop.name;
-    detailImageSecondary.classList.remove("active");
-    activeImageLayer = 0;
-    lastDetailImageSrc = src;
-
-    if (gallery.length > 1) {
-      let galleryIndex = initialIndex;
-      imageRotationTimer = window.setInterval(() => {
-        if (selectedStopIndex !== itineraryStops.indexOf(stop)) return;
-        galleryIndex = (galleryIndex + 1) % gallery.length;
-        if (gallery[galleryIndex] === lastDetailImageSrc) {
-          galleryIndex = (galleryIndex + 1) % gallery.length;
-        }
-        swapDetailImage(gallery, galleryIndex);
-      }, 4000);
-    }
-  }, 0, stop.image);
 }
 
 function animateTravelerTo(targetLatLng) {
@@ -321,9 +201,10 @@ function renderStop(index) {
   detailDays.textContent = stop.days;
   detailTitle.textContent = stop.name;
   detailText.textContent = stop.text;
+  detailImage.src = stop.image;
+  detailImage.alt = stop.name;
   detailHighlights.innerHTML = stop.highlights.map((h) => `<li>${h}</li>`).join("");
   setRouteProgressByIndex(index);
-  setDetailGallery(stop, 0);
 }
 
 stopItems.forEach((item) => {

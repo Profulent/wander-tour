@@ -56,7 +56,8 @@ a { color: inherit; text-decoration: none; }
   overflow: hidden;
   border: 1px solid rgba(203,125,86,0.25);
   box-shadow: 0 16px 34px rgba(32,23,17,0.08);
-  min-height: 390px;
+  min-height: 220px;
+  max-height: 260px;
   animation: fadeIn 0.9s ease;
 }
 
@@ -172,42 +173,25 @@ a { color: inherit; text-decoration: none; }
 }
 
 .stop-detail {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
   overflow: hidden;
-  align-items: flex-start;
 }
 
 .detail-image-wrap {
   position: relative;
-  width: 170px;
-  height: 118px;
+  min-height: 280px;
   overflow: hidden;
-  border-radius: 0.9rem;
-  flex: 0 0 auto;
 }
 
-.detail-image {
-  position: absolute;
-  inset: 0;
+.detail-image-wrap img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  opacity: 0;
-  transition: opacity 0.45s ease, transform 0.45s ease;
-  transform: scale(1.01);
 }
-
-.detail-image.active {
-  opacity: 1;
-  transform: scale(1);
-}
-
-.detail-content { padding: 1rem 1.1rem; }
 
 .detail-content {
-  padding: 0 1.1rem 1.1rem;
+  padding: 1rem 1.1rem;
 }
 
 .detail-days {
@@ -399,7 +383,7 @@ a { color: inherit; text-decoration: none; }
 
 @media (max-width: 1080px) {
   .hero { grid-template-columns: 1fr; }
-  .hero-image-wrap { min-height: 310px; }
+  .hero-image-wrap { min-height: 180px; max-height: 220px; }
   .planner-layout { grid-template-columns: 1fr; }
   .stops-panel { position: static; }
 }
@@ -411,8 +395,8 @@ a { color: inherit; text-decoration: none; }
   .hero-content { padding: 1.2rem; }
   .map-card { padding: 0.8rem; }
   .route-map text { font-size: 18px; }
-  .stop-detail { display: flex; flex-direction: column; }
-  .detail-image-wrap { width: 140px; height: 94px; }
+  .stop-detail { grid-template-columns: 1fr; }
+  .detail-image-wrap { min-height: 220px; }
   .flow-grid { grid-template-columns: 1fr; }
   .day-by-day { padding: 1rem; }
   .day-title { font-size: 1.1rem; }
