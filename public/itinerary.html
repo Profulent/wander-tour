@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wander - Grand Italian Itinerary</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+  <link rel="stylesheet" href="/css/itinerary.css" />
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="/">Back to Wander</a>
+    <div class="top-tag">14-Day Signature Journey</div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="hero-content">
+        <p class="eyebrow">Featured Route</p>
+        <h1>The Grand Italian Road Trip</h1>
+        <p class="hero-text">
+          A story-driven 14-day route from Rome to the Amalfi Coast, with curated stops,
+          daily highlights, and a visual route map you can explore step by step.
+        </p>
+        <div class="hero-stats">
+          <div><span>4</span> Destinations</div>
+          <div><span>14</span> Days</div>
+          <div><span>1200 km</span> Scenic route</div>
+        </div>
+      </div>
+      <div class="hero-image-wrap">
+        <img src="https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?w=1400&auto=format&fit=crop" alt="Italian coast and colorful buildings" />
+      </div>
+    </section>
+
+    <section class="planner-layout">
+      <aside class="stops-panel">
+        <h2>Route Stops</h2>
+        <p>Select a stop to preview highlights, recommended pace, and route notes.</p>
+        <div class="stops-list" id="stopsList">
+          <button class="stop-item active" data-stop="0">
+            <span class="stop-days">Days 1-3</span>
+            <strong>Rome</strong>
+            <small>Ancient icons and evening food walks</small>
+          </button>
+          <button class="stop-item" data-stop="1">
+            <span class="stop-days">Days 4-6</span>
+            <strong>Florence</strong>
+            <small>Renaissance art and Tuscan vineyard loops</small>
+          </button>
+          <button class="stop-item" data-stop="2">
+            <span class="stop-days">Days 7-9</span>
+            <strong>Cinque Terre</strong>
+            <small>Clifftop trails and seaside villages</small>
+          </button>
+          <button class="stop-item" data-stop="3">
+            <span class="stop-days">Days 10-14</span>
+            <strong>Amalfi Coast</strong>
+            <small>Positano sunsets and coastal drives</small>
+          </button>
+        </div>
+      </aside>
+
+      <section class="map-panel">
+        <div class="map-card">
+          <div class="map-head">
+            <h2>Interactive Route Map</h2>
+            <p>Follow the path from north to south and click each city marker.</p>
+          </div>
+
+          <div class="route-map" id="routeMap" aria-label="Italian itinerary map"></div>
+        </div>
+
+        <article class="stop-detail" id="stopDetail">
+          <div class="detail-image-wrap">
+            <img id="detailImagePrimary" class="detail-image active" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop" alt="Rome skyline" />
+            <img id="detailImageSecondary" class="detail-image" src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?w=1200&auto=format&fit=crop" alt="Rome skyline" />
+          </div>
+          <div class="detail-content">
+            <p class="detail-days" id="detailDays">Days 1-3</p>
+            <h3 id="detailTitle">Rome</h3>
+            <p id="detailText">Start with iconic landmarks, then slow down through neighborhood streets, aperitivo bars, and food tours in Trastevere.</p>
+            <ul id="detailHighlights">
+              <li>Sunrise at the Colosseum and Roman Forum</li>
+              <li>Vatican early-entry museum walk</li>
+              <li>Chef-led pasta class in Trastevere</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </section>
+
+    <section class="daily-flow">
+      <h2>Daily Flow Snapshot</h2>
+      <div class="flow-grid">
+        <article>
+          <h3>Morning</h3>
+          <p>Guided city walks, viewpoints before crowds, and coffee stops with local recommendations.</p>
+        </article>
+        <article>
+          <h3>Afternoon</h3>
+          <p>Museum time, regional food tastings, and scenic transfer windows with planned photo pauses.</p>
+        </article>
+        <article>
+          <h3>Evening</h3>
+          <p>Sunset promenades, neighborhood dinners, and optional cultural performances.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="day-by-day">
+      <h2>Day-by-Day Itinerary</h2>
+      <p class="day-by-day-sub">Tap any day to expand transport plan, core experiences, and evening recommendations.</p>
+      <div class="day-accordion" id="dayAccordion"></div>
+    </section>
+  </main>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="/js/itinerary.js"></script>
+</body>
+</html>
