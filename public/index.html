@@ -24,7 +24,7 @@
       <li><a href="#itinerary" class="nav-link">Itineraries</a></li>
       <li><a href="#newsletter" class="nav-link">Newsletter</a></li>
     </ul>
-    <button class="nav-cta" onclick="scrollTo({top:document.getElementById('destinations').offsetTop,behavior:'smooth'})">Plan Trip</button>
+    <button class="nav-cta" id="planTripBtn">Plan Trip</button>
     <button class="hamburger" id="hamburger" aria-label="Menu">
       <span></span><span></span><span></span>
     </button>
@@ -119,13 +119,19 @@
         <button class="filter-tab" data-cat="romantic">💫 Romance</button>
         <button class="filter-tab" data-cat="wellness">🧘 Wellness</button>
       </div>
-      <select class="sort-select" id="sortSelect">
-        <option value="">Sort by</option>
-        <option value="rating">Top Rated</option>
-        <option value="popular">Most Popular</option>
-        <option value="price_asc">Price: Low → High</option>
-        <option value="price_desc">Price: High → Low</option>
-      </select>
+      <div class="sort-dropdown" id="sortDropdown">
+        <button class="sort-toggle" id="sortToggle" aria-haspopup="listbox" aria-expanded="false" aria-controls="sortMenu">
+          <span class="sort-toggle-label" id="sortLabel">Sort by</span>
+          <span class="sort-caret" aria-hidden="true"></span>
+        </button>
+        <div class="sort-menu" id="sortMenu" role="listbox" aria-label="Sort destinations">
+          <button class="sort-option active" data-sort="" role="option" aria-selected="true">Sort by</button>
+          <button class="sort-option" data-sort="rating" role="option" aria-selected="false">Top Rated</button>
+          <button class="sort-option" data-sort="popular" role="option" aria-selected="false">Most Popular</button>
+          <button class="sort-option" data-sort="price_asc" role="option" aria-selected="false">Price: Low to High</button>
+          <button class="sort-option" data-sort="price_desc" role="option" aria-selected="false">Price: High to Low</button>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -253,6 +259,53 @@
       <button class="modal-close" id="modalClose">✕</button>
       <div class="modal-content" id="modalContent"></div>
     </div>
+  </div>
+
+  <!-- TRIP PLANNER -->
+  <div class="planner-overlay" id="plannerOverlay">
+    <aside class="planner-panel" id="plannerPanel" aria-labelledby="plannerTitle" aria-modal="true" role="dialog">
+      <button class="planner-close" id="plannerClose" aria-label="Close trip planner">✕</button>
+      <div class="planner-head">
+        <div class="planner-kicker">Interactive Planner</div>
+        <h3 class="planner-title" id="plannerTitle">Build your perfect trip</h3>
+        <p class="planner-sub">Pick a destination, travel month, and style. We will suggest a quick estimate.</p>
+      </div>
+
+      <form class="planner-form" id="plannerForm">
+        <label class="planner-label" for="plannerDestination">Destination</label>
+        <select class="planner-input" id="plannerDestination" required>
+          <option value="">Choose a destination</option>
+          <option value="Santorini">Santorini</option>
+          <option value="Bali">Bali</option>
+          <option value="Kyoto">Kyoto</option>
+          <option value="Maldives">Maldives</option>
+          <option value="Amalfi Coast">Amalfi Coast</option>
+          <option value="Patagonia">Patagonia</option>
+        </select>
+
+        <label class="planner-label" for="plannerMonth">Travel month</label>
+        <input class="planner-input" id="plannerMonth" type="month" required />
+
+        <label class="planner-label" for="plannerTravelers">Travelers</label>
+        <input class="planner-input" id="plannerTravelers" type="number" min="1" max="12" value="2" required />
+
+        <div>
+          <div class="planner-label">Style</div>
+          <div class="planner-style-grid" id="plannerStyles">
+            <button class="planner-style active" type="button" data-style="Balanced">Balanced</button>
+            <button class="planner-style" type="button" data-style="Luxury">Luxury</button>
+            <button class="planner-style" type="button" data-style="Adventure">Adventure</button>
+            <button class="planner-style" type="button" data-style="Budget">Budget</button>
+          </div>
+        </div>
+
+        <button class="planner-submit" type="submit">Generate Plan</button>
+      </form>
+
+      <div class="planner-result" id="plannerResult">
+        Pick your preferences to generate a quick travel plan.
+      </div>
+    </aside>
   </div>
 
   <!-- TOAST -->

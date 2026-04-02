@@ -127,7 +127,7 @@ const destinations = [
     currency: "USD",
     duration: "5–7 days",
     bestTime: "May – September",
-    image: "https://images.unsplash.com/photo-1533606688076-b6683a5f59f1?w=800",
+    image: "https://images.unsplash.com/photo-1476514525535-07fb3b4ae5f1?w=800&auto=format&fit=crop",
     featured: false,
     badge: null,
     description:
