@@ -37,7 +37,7 @@ a { text-decoration: none; }
 .cursor {
   position: fixed; top: 0; left: 0;
   width: 8px; height: 8px;
-  background: var(--terracotta);
+  background: red;
   border-radius: 50%; pointer-events: none;
   z-index: 9999; transform: translate(-50%, -50%);
   transition: transform 0.1s, opacity 0.2s;
@@ -45,7 +45,7 @@ a { text-decoration: none; }
 .cursor-follower {
   position: fixed; top: 0; left: 0;
   width: 32px; height: 32px;
-  border: 1.5px solid var(--terracotta);
+  border: 1.5px solid red;
   border-radius: 50%; pointer-events: none;
   z-index: 9998; transform: translate(-50%, -50%);
   transition: transform 0.25s ease, width 0.3s, height 0.3s, opacity 0.2s;
@@ -53,6 +53,15 @@ a { text-decoration: none; }
 }
 .cursor.hover { transform: translate(-50%, -50%) scale(2.5); opacity: 0; }
 .cursor-follower.hover { width: 52px; height: 52px; opacity: 0.25; }
+
+
+.cursor.orange-area {
+  background-color: white !important;
+}
+
+.cursor-follower.orange-area {
+  border-color: white !important;
+}
 
 /* ─────────────────────────────────────────────
    NAV

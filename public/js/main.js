@@ -36,6 +36,26 @@ function showToast(msg, type = "success") {
     cursor.style.top = fy + "px";
   });
 
+  const newsletter = document.querySelector(".nl-section");
+
+  document.addEventListener("mousemove", (e) => {
+    if (!newsletter) return;
+
+    const rect = newsletter.getBoundingClientRect();
+
+    const isInside =
+      e.clientY >= rect.top &&
+      e.clientY <= rect.bottom;
+
+    if (isInside) {
+      cursor.classList.add("orange-area");
+      follower.classList.add("orange-area");
+    } else {
+      cursor.classList.remove("orange-area");
+      follower.classList.remove("orange-area");
+    }
+  });
+
   (function raf() {
     lx += (fx - lx) * 0.12;
     ly += (fy - ly) * 0.12;
