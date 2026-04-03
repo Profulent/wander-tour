@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book Your Italian Adventure - Wander</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,700;1,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/css/booking.css" />
+</head>
+<body>
+  <header class="booking-header">
+    <a class="back-link" href="/itinerary.html">← Back to Itinerary</a>
+    <div class="header-tag">Complete Your Booking</div>
+  </header>
+
+  <main class="booking-container">
+    <div class="booking-wrapper">
+      <section class="booking-hero">
+        <h1>Book Your Grand Italian Road Trip</h1>
+        <p>Fill in your details to secure your 14-day adventure from Rome to the Amalfi Coast</p>
+        <div class="trip-summary">
+          <div class="trip-info">
+            <span class="trip-label">Duration:</span>
+            <span class="trip-value">14 Days</span>
+          </div>
+          <div class="trip-info">
+            <span class="trip-label">Route:</span>
+            <span class="trip-value">4 Destinations</span>
+          </div>
+          <div class="trip-info">
+            <span class="trip-label">Distance:</span>
+            <span class="trip-value">1200 km</span>
+          </div>
+        </div>
+      </section>
+
+      <form class="booking-form" id="bookingForm">
+        <!-- Personal Information -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">
+            <span class="section-icon">👤</span>
+            Personal Information
+          </legend>
+          
+          <div class="form-row">
+            <div class="form-group">
+              <label for="firstName">First Name *</label>
+              <input type="text" id="firstName" name="firstName" required placeholder="John" />
+            </div>
+            <div class="form-group">
+              <label for="lastName">Last Name *</label>
+              <input type="text" id="lastName" name="lastName" required placeholder="Doe" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="email">Email Address *</label>
+              <input type="email" id="email" name="email" required placeholder="john@example.com" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phone">Phone Number *</label>
+              <input type="tel" id="phone" name="phone" required placeholder="+1 (555) 000-0000" />
+            </div>
+            <div class="form-group">
+              <label for="nationality">Nationality *</label>
+              <input type="text" id="nationality" name="nationality" required placeholder="e.g., United States" />
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Travel Preferences -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">
+            <span class="section-icon">✈️</span>
+            Travel Preferences
+          </legend>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="departureDate">Preferred Departure Date *</label>
+              <input type="date" id="departureDate" name="departureDate" required />
+            </div>
+            <div class="form-group">
+              <label for="travelers">Number of Travelers *</label>
+              <select id="travelers" name="travelers" required>
+                <option value="">Select...</option>
+                <option value="1">1 Person</option>
+                <option value="2">2 People</option>
+                <option value="3">3 People</option>
+                <option value="4">4 People</option>
+                <option value="5">5+ People</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="accommodationType">Accommodation Preference *</label>
+              <div class="radio-group">
+                <label class="radio-option">
+                  <input type="radio" name="accommodationType" value="luxury" required />
+                  <span class="radio-label">Luxury Hotels</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="accommodationType" value="comfort" />
+                  <span class="radio-label">Comfort Hotels</span>
+                </label>
+                <label class="radio-option">
+                  <input type="radio" name="accommodationType" value="boutique" />
+                  <span class="radio-label">Boutique Properties</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="travelStyle">Travel Style *</label>
+              <div class="checkbox-group">
+                <label class="checkbox-option">
+                  <input type="checkbox" name="travelStyle" value="guided" />
+                  <span>Guided Tours</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="travelStyle" value="independent" />
+                  <span>Independent Exploration</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="travelStyle" value="activities" />
+                  <span>Adventure Activities</span>
+                </label>
+                <label class="checkbox-option">
+                  <input type="checkbox" name="travelStyle" value="culinary" />
+                  <span>Food & Wine Experiences</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Interests & Highlights -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">
+            <span class="section-icon">⭐</span>
+            Interests & Highlights
+          </legend>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label>Interested In: *</label>
+              <div class="interest-grid">
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="art-culture" />
+                  <span class="interest-icon">🎨</span>
+                  <span class="interest-name">Art & Culture</span>
+                </label>
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="food-wine" />
+                  <span class="interest-icon">🍷</span>
+                  <span class="interest-name">Food & Wine</span>
+                </label>
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="hiking" />
+                  <span class="interest-icon">🥾</span>
+                  <span class="interest-name">Hiking & Nature</span>
+                </label>
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="photography" />
+                  <span class="interest-icon">📸</span>
+                  <span class="interest-name">Photography</span>
+                </label>
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="history" />
+                  <span class="interest-icon">🏛️</span>
+                  <span class="interest-name">History</span>
+                </label>
+                <label class="interest-card">
+                  <input type="checkbox" name="interests" value="relaxation" />
+                  <span class="interest-icon">🧘</span>
+                  <span class="interest-name">Relaxation</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="budget">Budget Range *</label>
+              <select id="budget" name="budget" required>
+                <option value="">Select budget...</option>
+                <option value="5k-10k">$5,000 - $10,000</option>
+                <option value="10k-15k">$10,000 - $15,000</option>
+                <option value="15k-20k">$15,000 - $20,000</option>
+                <option value="20k+">$20,000+</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="pace">Travel Pace *</label>
+              <select id="pace" name="pace" required>
+                <option value="">Select pace...</option>
+                <option value="relaxed">Relaxed (Stay longer in each place)</option>
+                <option value="moderate">Moderate</option>
+                <option value="active">Active (See more, do more)</option>
+              </select>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Special Requests -->
+        <fieldset class="form-section">
+          <legend class="form-section-title">
+            <span class="section-icon">💬</span>
+            Special Requests
+          </legend>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label for="specialRequests">Any special requests or dietary restrictions?</label>
+              <textarea id="specialRequests" name="specialRequests" placeholder="Tell us about dietary restrictions, accessibility needs, or any special requests..." rows="4"></textarea>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="checkbox-option checkbox-large">
+                <input type="checkbox" name="newsletter" id="newsletter" />
+                <span>I'd like to receive travel tips and exclusive offers via email</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group full-width">
+              <label class="checkbox-option checkbox-large">
+                <input type="checkbox" name="terms" id="terms" required />
+                <span>I agree to the terms and conditions *</span>
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <!-- Submit -->
+        <div class="form-actions">
+          <button type="button" class="btn-secondary" onclick="window.location.href='/itinerary.html'">Cancel</button>
+          <button type="submit" class="btn-primary-large">Complete Booking</button>
+        </div>
+      </form>
+
+      <div class="booking-success-message" id="successMessage">
+        <div class="success-icon">✓</div>
+        <h3>Booking Submitted!</h3>
+        <p>Thank you for booking your Italian adventure. We'll be in touch shortly to confirm your trip details.</p>
+        <button class="btn-primary" onclick="window.location.href='/itinerary.html'">Back to Itinerary</button>
+      </div>
+    </div>
+
+    <!-- Price Summary Sidebar -->
+    <aside class="price-summary">
+      <h3>Trip Summary</h3>
+      <div class="summary-item">
+        <span>Base Package (14 days)</span>
+        <span class="price">$12,500</span>
+      </div>
+      <div class="summary-item">
+        <span>Accommodation</span>
+        <span class="price">TBD</span>
+      </div>
+      <div class="summary-item">
+        <span>Transportation</span>
+        <span class="price">TBD</span>
+      </div>
+      <div class="summary-item">
+        <span>Experiences</span>
+        <span class="price">TBD</span>
+      </div>
+      <div class="summary-divider"></div>
+      <div class="summary-total">
+        <span>Estimated Total</span>
+        <span class="price">From $12,500</span>
+      </div>
+      <p class="summary-note">Final pricing will be provided after review of your preferences.</p>
+    </aside>
+  </main>
+
+  <footer class="booking-footer">
+    <p>&copy; 2026 Wander. All rights reserved. | <a href="/">Home</a> | <a href="/itinerary.html">Itinerary</a></p>
+  </footer>
+
+  <script src="/js/booking.js"></script>
+</body>
+</html>

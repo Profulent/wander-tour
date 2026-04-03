@@ -293,6 +293,7 @@ function renderDestinations(dests) {
             ${d.badge ? `<span class="dest-badge">${d.badge}</span>` : ""}
             <span class="dest-price">From $${d.price.toLocaleString()}</span>
           </div>
+          <a href="/booking.html" class="dest-booking-btn" onclick="event.stopPropagation();">📍 Book This</a>
         </div>
       </div>`;
     })
@@ -583,9 +584,9 @@ function renderModal(d, content) {
           ${d.highlights.map((h) => `<span class="highlight-chip">${h}</span>`).join("")}
         </div>
       </div>
-      <button class="btn-primary" onclick="showToast('Booking coming soon! 🌍')">
+      <a class="btn-primary" href="/booking.html?destination=${encodeURIComponent(d.name)}" style="display:inline-flex;justify-content:center;text-decoration:none;">
         Book This Destination
-      </button>
+      </a>
     </div>`;
 }
 

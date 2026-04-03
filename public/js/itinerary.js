@@ -83,9 +83,24 @@ let progressPolyline;
 let travelerMarker;
 let stopMarkers = [];
 let travelerLatLng = null;
+let imageRotationTimer = null;
 
 function getRouteLatLngs() {
   return itineraryStops.map((stop) => stop.latlng);
+}
+
+function stopLatLng(index) {
+  return itineraryStops[index]?.latlng || [0, 0];
+}
+
+function setStopMarkerStyles(index) {
+  if (!stopMarkers || stopMarkers.length === 0) return;
+  stopMarkers.forEach((marker, i) => {
+    const isSelected = i === index;
+    marker.setStyle({
+      fillColor: isSelected ? "#cb7d56" : "#fffaf4",
+    });
+  });
 }
 
 function animateTravelerTo(targetLatLng) {

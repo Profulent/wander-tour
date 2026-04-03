@@ -507,6 +507,30 @@ nav.scrolled {
 }
 .dest-card:hover .dest-hover-btn { transform: translateY(0); }
 
+.dest-booking-btn {
+  display: inline-block;
+  margin-top: 0.8rem;
+  padding: 0.6rem 1rem;
+  background: linear-gradient(135deg, #cb7d56 0%, #b86b45 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(203,125,86,0.2);
+}
+
+.dest-booking-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(203,125,86,0.35);
+  background: linear-gradient(135deg, #b86b45 0%, #cb7d56 100%);
+}
+
+.dest-booking-btn:active {
+  transform: translateY(0);
+}
+
 /* NO RESULTS */
 .no-results {
   grid-column: 1 / -1; text-align: center; padding: 4rem 1rem;
